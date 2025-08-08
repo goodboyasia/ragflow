@@ -59,6 +59,7 @@ module.exports = {
         'bg-base': 'var(--bg-base)',
         'bg-card': 'var(--bg-card)',
         'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
         'text-disabled': 'var(--text-disabled)',
         'text-input-tip': 'var(--text-input-tip)',
         'border-default': 'var(--border-default)',
@@ -176,10 +177,6 @@ module.exports = {
         },
         'colors-background-inverse-strong': {
           DEFAULT: 'var(--colors-background-inverse-strong)',
-          foreground: 'var(--background-inverse-standard-foreground)',
-        },
-        'colors-background-inverse-weak': {
-          DEFAULT: 'var(--colors-background-inverse-weak)',
           foreground: 'var(--background-inverse-standard-foreground)',
         },
         'colors-background-neutral-standard': {
