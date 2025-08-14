@@ -193,6 +193,7 @@ export type INoteNode = BaseNode;
 export type IMessageNode = BaseNode;
 export type IRewriteNode = BaseNode;
 export type IInvokeNode = BaseNode;
+export type IMyInvokeNode = BaseNode;
 export type ITemplateNode = BaseNode;
 export type IEmailNode = BaseNode;
 export type IIterationNode = BaseNode;
@@ -215,6 +216,7 @@ export type RAGFlowNodeType =
   | IMessageNode
   | IRewriteNode
   | IInvokeNode
+  | IMyInvokeNode
   | ITemplateNode
   | IEmailNode
   | IIterationNode

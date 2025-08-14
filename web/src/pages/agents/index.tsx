@@ -47,15 +47,16 @@ export default function Agents() {
       </div>
       <div className="flex-1 overflow-auto">
         <div className="flex flex-wrap gap-4   px-8">
-          {data.map((x) => {
-            return (
-              <AgentCard
-                key={x.id}
-                data={x}
-                showAgentRenameModal={showAgentRenameModal}
-              ></AgentCard>
-            );
-          })}
+          {data &&
+            data.map((x) => {
+              return (
+                <AgentCard
+                  key={x.id}
+                  data={x}
+                  showAgentRenameModal={showAgentRenameModal}
+                ></AgentCard>
+              );
+            })}
         </div>
       </div>
       <div className="mt-8 px-8 pb-8">

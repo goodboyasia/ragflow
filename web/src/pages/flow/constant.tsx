@@ -102,6 +102,7 @@ export enum Operator {
   Note = 'Note',
   Crawler = 'Crawler',
   Invoke = 'Invoke',
+  MyInvoke = 'MyInvoke',
   Template = 'Template',
   Email = 'Email',
   Iteration = 'Iteration',
@@ -146,6 +147,7 @@ export const operatorIconMap = {
   [Operator.Note]: NoteIcon,
   [Operator.Crawler]: CrawlerIcon,
   [Operator.Invoke]: InvokeIcon,
+  [Operator.MyInvoke]: InvokeIcon,
   [Operator.Template]: TemplateIcon,
   [Operator.Email]: EmailIcon,
   [Operator.Iteration]: IterationCcw,
@@ -283,6 +285,9 @@ export const operatorMap: Record<
   [Operator.Invoke]: {
     backgroundColor: '#dee0e2',
   },
+  [Operator.MyInvoke]: {
+    backgroundColor: '#dee0e2',
+  },
   [Operator.Template]: {
     backgroundColor: '#dee0e2',
   },
@@ -392,6 +397,9 @@ export const componentMenuList = [
   },
   {
     name: Operator.Invoke,
+  },
+  {
+    name: Operator.MyInvoke,
   },
   {
     name: Operator.Email,
@@ -618,6 +626,19 @@ export const initialInvokeValues = {
   clean_html: false,
   datatype: 'json',
 };
+export const initialMyInvokeValues = {
+  url: 'http://',
+  method: 'GET',
+  timeout: 60,
+  headers: `{
+  "Accept": "*/*",
+  "Cache-Control": "no-cache",
+  "Connection": "keep-alive"
+}`,
+  proxy: 'http://',
+  clean_html: false,
+  datatype: 'json',
+};
 
 export const initialTemplateValues = {
   content: '',
@@ -731,6 +752,7 @@ export const RestrictedUpstreamMap = {
   [Operator.Crawler]: [Operator.Begin],
   [Operator.Note]: [],
   [Operator.Invoke]: [Operator.Begin],
+  [Operator.MyInvoke]: [Operator.Begin],
   [Operator.Template]: [Operator.Begin, Operator.Relevant],
   [Operator.Email]: [Operator.Begin],
   [Operator.Iteration]: [Operator.Begin],
@@ -771,6 +793,7 @@ export const NodeMap = {
   [Operator.Note]: 'noteNode',
   [Operator.Crawler]: 'ragNode',
   [Operator.Invoke]: 'invokeNode',
+  [Operator.MyInvoke]: 'myInvokeNode',
   [Operator.Template]: 'templateNode',
   [Operator.Email]: 'emailNode',
   [Operator.Iteration]: 'group',

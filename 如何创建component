@@ -1,0 +1,14 @@
+后端
+agent/component/myinvoke.py
+
+前端
+声明像是初始化参数之类的
+web/src/pages/agent/constant.tsx
+界面表单：会使用这些初始化参数
+web/src/pages/agent/form/myinvoke-form
+web/src/pages/agent/hooks.tsx
+
+相当于注册到flow里面
+\web\src\pages\flow\constant.tsx
+类似于注册？
+web/src/pages/flow/hooks.tsx

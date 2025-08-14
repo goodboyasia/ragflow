@@ -39,6 +39,7 @@ import { IterationNode, IterationStartNode } from './node/iteration-node';
 import { KeywordNode } from './node/keyword-node';
 import { LogicNode } from './node/logic-node';
 import { MessageNode } from './node/message-node';
+import { MyInvokeNode } from './node/myinvoke-node';
 import NoteNode from './node/note-node';
 import { RelevantNode } from './node/relevant-node';
 import { RetrievalNode } from './node/retrieval-node';
@@ -60,6 +61,7 @@ export const nodeTypes: NodeTypes = {
   rewriteNode: RewriteNode,
   keywordNode: KeywordNode,
   invokeNode: InvokeNode,
+  myInvokeNode: MyInvokeNode,
   templateNode: TemplateNode,
   emailNode: EmailNode,
   group: IterationNode,

@@ -28,6 +28,7 @@ import InvokeForm from '../form/invoke-form';
 import Jin10Form from '../form/jin10-form';
 import KeywordExtractForm from '../form/keyword-extract-form';
 import MessageForm from '../form/message-form';
+import MyInvokeForm from '../form/myinvoke-form';
 import PubMedForm from '../form/pubmed-form';
 import QWeatherForm from '../form/qweather-form';
 import RelevantForm from '../form/relevant-form';
@@ -92,6 +93,7 @@ const FormMap = {
   [Operator.TuShare]: TuShareForm,
   [Operator.Crawler]: CrawlerForm,
   [Operator.Invoke]: InvokeForm,
+  [Operator.MyInvoke]: MyInvokeForm,
   [Operator.Concentrator]: () => <></>,
   [Operator.Note]: () => <></>,
   [Operator.Template]: TemplateForm,

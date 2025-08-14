@@ -76,6 +76,7 @@ export enum Operator {
   Note = 'Note',
   Crawler = 'Crawler',
   Invoke = 'Invoke',
+  MyInvoke = 'MyInvoke',
   Email = 'Email',
   Iteration = 'Iteration',
   IterationStart = 'IterationItem',
@@ -206,6 +207,9 @@ export const componentMenuList = [
   },
   {
     name: Operator.Invoke,
+  },
+  {
+    name: Operator.MyInvoke,
   },
   {
     name: Operator.Email,
@@ -575,6 +579,25 @@ export const initialInvokeValues = {
     },
   },
 };
+export const initialMyInvokeValues = {
+  url: '',
+  method: 'GET',
+  timeout: 60,
+  headers: `{
+  "Accept": "*/*",
+  "Cache-Control": "no-cache",
+  "Connection": "keep-alive"
+}`,
+  proxy: '',
+  clean_html: false,
+  variables: [],
+  outputs: {
+    result: {
+      value: '',
+      type: 'string',
+    },
+  },
+};
 
 export const initialTemplateValues = {
   content: '',
@@ -825,6 +848,7 @@ export const RestrictedUpstreamMap = {
   [Operator.Crawler]: [Operator.Begin],
   [Operator.Note]: [],
   [Operator.Invoke]: [Operator.Begin],
+  [Operator.MyInvoke]: [Operator.Begin],
   [Operator.Email]: [Operator.Begin],
   [Operator.Iteration]: [Operator.Begin],
   [Operator.IterationStart]: [Operator.Begin],
@@ -869,6 +893,7 @@ export const NodeMap = {
   [Operator.Note]: 'noteNode',
   [Operator.Crawler]: 'ragNode',
   [Operator.Invoke]: 'ragNode',
+  [Operator.MyInvoke]: 'ragNode',
   [Operator.Email]: 'ragNode',
   [Operator.Iteration]: 'group',
   [Operator.IterationStart]: 'iterationStartNode',

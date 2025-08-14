@@ -22,6 +22,7 @@ import IterationStartForm from '../form/iteration-start-from';
 import Jin10Form from '../form/jin10-form';
 import KeywordExtractForm from '../form/keyword-extract-form';
 import MessageForm from '../form/message-form';
+import MyInvokeForm from '../form/myinvoke-form';
 import PubMedForm from '../form/pubmed-form';
 import QWeatherForm from '../form/qweather-form';
 import RelevantForm from '../form/relevant-form';
@@ -131,6 +132,9 @@ export const FormConfigMap = {
   },
   [Operator.Invoke]: {
     component: InvokeForm,
+  },
+  [Operator.MyInvoke]: {
+    component: MyInvokeForm,
   },
   [Operator.Concentrator]: {
     component: () => <></>,
