@@ -68,10 +68,17 @@ if __name__ == "__main__":
             urllib.request.urlretrieve(download_url, filename)
 
     local_dir = os.path.abspath('nltk_data')
+    os.makedirs(local_dir, exist_ok=True)
+    nltk.data.path.insert(0, local_dir)
+    dl = nltk.downloader.Downloader()
+    # 4. 手动设置 index_url（直接修改属性）
+    dl._index_url = 'https://mirrors.tuna.tsinghua.edu.cn/nltk_data/'
+    # 或者尝试这个（有些版本是直接赋值 urls）
+    dl.urls = lambda: f'https://mirrors.tuna.tsinghua.edu.cn/nltk_data/packages.json'
     for data in ['wordnet', 'punkt', 'punkt_tab']:
         print(f"Downloading nltk {data}...")
-        nltk.download(data, download_dir=local_dir)
+        dl.download(data, download_dir=local_dir)
 
     for repo_id in repos:
         print(f"Downloading huggingface repo {repo_id}...")
-        download_model(repo_id)
+        #download_model(repo_id)

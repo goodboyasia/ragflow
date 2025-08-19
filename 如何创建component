@@ -1,14 +1,69 @@
 后端
 agent/component/myinvoke.py
-
 前端
 声明像是初始化参数之类的
 web/src/pages/agent/constant.tsx
 界面表单：会使用这些初始化参数
 web/src/pages/agent/form/myinvoke-form
 web/src/pages/agent/hooks.tsx
-
 相当于注册到flow里面
 \web\src\pages\flow\constant.tsx
 类似于注册？
 web/src/pages/flow/hooks.tsx
+
+构建镜像：
+docker build --platform linux/amd64 --build-arg LIGHTEN=1 --build-arg NEED_MIRROR=1 -f Dockerfile -t ragflow-local .
+./Dockerfile注释掉#RUN cargo --version && rustc --version
+pyproject.toml新增依赖包
+jsonpath_ng
+pip show jsonpath_ng 查看版本
+还需要更新uv.lock文件：
+uv pip install jsonpath-ng>=1.7.0
+uv lock
+查看uv.lock中是否存在了该包
+
+arm版本：
+uv run download_deps.py --china-mirrors
+docker build --platform linux/arm64 --build-arg NEED_MIRROR=1 -f Dockerfile.deps -t infiniflow/ragflow_deps .
+docker build --platform linux/arm64 --build-arg LIGHTEN=1 --build-arg NEED_MIRROR=1 -f Dockerfile -t ragflow-local-arm .
+
+启动
+docker compose -p ragflow -f docker-compose.yml up -d
+
+
+#在一台arm机器上构建
+将windows本地的文件压缩copy到机器上
+执行docker build报错了
+sh: 1: umi: Permission denied
+WARNING: current commit information was not captured by the build: git was not found in the system
+解决方式
+chmod +x node-modules /.bin/*  赋权执行权限
+宿主机上安装yum install git
+
+阿里编译镜像
+python --vesion  3.8及以上
+pip --version    20以上
+
+yum update -y
+yum install python38 -y
+python --version
+alias python=python3.8
+echo 'alias python=python3.8' >> ~/.bashrc
+source ~/.bashrc
+python --version
+python -m pip --version
+python -m pip install --upgrade pip
+pip --version
+pip install pipx
+pipx install uv
+python -m pipx ensurepath
+source ~/.bashrc
+
+export HF_ENDPOINT=https://hf-mirror.com
+uv run download_deps.py --china-mirrors
+docker build --platform linux/arm64 --build-arg NEED_MIRROR=1 -f Dockerfile.deps -t infiniflow/ragflow_deps .
+
+cd web
+npm install #生成node_modules
+npm run build 生成dist文件夹
+docker build --platform linux/arm64 --build-arg LIGHTEN=1 --build-arg NEED_MIRROR=1 -f Dockerfile -t ragflow-local-arm .

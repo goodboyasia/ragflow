@@ -1,0 +1,21 @@
+FROM infiniflow/ragflow:base AS frontend-builder
+USER root
+
+WORKDIR /ragflow
+
+# Install frontend dependencies and build
+COPY web web
+RUN --mount=type=cache,id=ragflow_npm,target=/root/.npm,sharing=locked \
+    cd web && npm install && npm run build
+
+# Production stage
+FROM nginx:alpine AS frontend-production
+
+# Copy compiled web pages
+COPY --from=frontend-builder /ragflow/web/dist /usr/share/nginx/html
+
+# Expose port for frontend
+EXPOSE 80
+
+# Start nginx
+CMD ["nginx", "-g", "daemon off;"]
